@@ -1,0 +1,772 @@
+/* 简历纸面：八套模板共用一份结构，只在这里决定版面 */
+
+.cv-paper {
+  --cv-size: calc(13.5px * var(--cv-scale, 1));
+  --cv-muted: #5f6672;
+  --cv-faint: #a3a8b0;
+  width: 794px;
+  min-height: 1123px;
+  background: #fff;
+  color: #1c222c;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: var(--cv-size);
+  line-height: var(--cv-leading, 1.55);
+  font-variant-numeric: tabular-nums;
+  word-break: break-word;
+  text-align: left;
+}
+.cv-paper * {
+  box-sizing: border-box;
+}
+.cv-paper h1,
+.cv-paper h2,
+.cv-paper p,
+.cv-paper ul {
+  margin: 0;
+  padding: 0;
+}
+.cv-paper ul {
+  list-style: none;
+}
+
+/* ---------- 通用结构 ---------- */
+.cv-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0 1.6em;
+}
+.cv-header-main {
+  flex: 1;
+  min-width: 0;
+}
+.cv-header > .cv-summary {
+  flex-basis: 100%;
+}
+.cv-name {
+  font-weight: 700;
+  line-height: 1.2;
+  color: #12161d;
+}
+.cv-headline {
+  margin-top: 0.2em;
+  color: #39404b;
+}
+.cv-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--cv-muted);
+  font-size: 0.9em;
+}
+.cv-contacts span + span::before {
+  content: '|';
+  margin: 0 0.65em;
+  color: #c6cad0;
+}
+.cv-summary {
+  margin-top: 0.6em;
+  color: #39404b;
+}
+.cv-photo {
+  width: 104px;
+  height: 128px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+.cv-icon {
+  width: 1em;
+  height: 1em;
+  margin-left: 0.45em;
+  vertical-align: -0.12em;
+  display: inline-block;
+}
+
+.cv-item + .cv-item {
+  margin-top: 0.85em;
+}
+.cv-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.2em;
+}
+.cv-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 1.2em;
+  align-items: baseline;
+}
+.cv-stack .cv-heading {
+  grid-column: 1;
+  grid-row: 1;
+}
+.cv-stack .cv-date {
+  grid-column: 2;
+  grid-row: 1;
+}
+.cv-stack .cv-sub {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+.cv-heading {
+  font-weight: 700;
+  color: #12161d;
+}
+.cv-date {
+  flex-shrink: 0;
+  color: var(--cv-muted);
+  font-size: 0.92em;
+  margin-left: auto;
+  white-space: nowrap;
+}
+.cv-sub {
+  color: #39404b;
+}
+.cv-bullets {
+  margin-top: 0.25em;
+}
+.cv-bullet {
+  display: flex;
+  gap: 0.45em;
+}
+.cv-bullet + .cv-bullet {
+  margin-top: 0.18em;
+}
+.cv-marker {
+  flex-shrink: 0;
+  width: 0.8em;
+  color: var(--cv-accent);
+}
+.cv-lead {
+  font-weight: 700;
+  color: #12161d;
+}
+.cv-inline {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2em;
+}
+.cv-inline + .cv-inline {
+  margin-top: 0.2em;
+}
+.cv-inline-head {
+  font-weight: 600;
+}
+.cv-inline-sub {
+  color: #39404b;
+}
+
+/* ---------- 简洁标准：粗体大名字、粗黑线、细线分节 ---------- */
+.cv-classic {
+  padding: 48px 54px 46px;
+  color: #1f1f1f;
+}
+.cv-classic .cv-header {
+  padding-bottom: 0.85em;
+  margin-bottom: 1.15em;
+  border-bottom: 3px solid var(--cv-accent);
+}
+.cv-classic .cv-name {
+  font-size: 2.5em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--cv-accent);
+}
+.cv-classic .cv-headline {
+  margin-top: 0.3em;
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #1f1f1f;
+}
+.cv-classic .cv-contacts {
+  margin-top: 0.45em;
+  color: #333;
+  font-size: 0.95em;
+}
+.cv-classic .cv-contacts span + span::before {
+  color: #333;
+  margin: 0 0.55em;
+}
+.cv-classic .cv-section {
+  margin-top: 1.3em;
+}
+.cv-classic .cv-section-title {
+  font-size: 1.08em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #1f1f1f;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 0.18em;
+  margin-bottom: 0.55em;
+}
+.cv-classic .cv-heading,
+.cv-classic .cv-date {
+  font-weight: 600;
+  color: #1f1f1f;
+}
+.cv-classic .cv-date {
+  font-size: 1em;
+}
+.cv-classic .cv-marker {
+  color: #1f1f1f;
+}
+.cv-classic .cv-summary {
+  text-align: justify;
+}
+.cv-classic .cv-section-skill .cv-section-body,
+.cv-elegant .cv-section-skill .cv-section-body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.25em 1.6em;
+}
+.cv-classic .cv-section-skill .cv-inline,
+.cv-elegant .cv-section-skill .cv-inline {
+  margin: 0;
+  flex-direction: column;
+  gap: 0;
+}
+.cv-classic .cv-section-skill .cv-inline-sep,
+.cv-elegant .cv-section-skill .cv-inline-sep {
+  display: none;
+}
+
+/* ---------- 页眉色带：浅灰页眉，联系方式靠右 ---------- */
+.cv-paper.cv-banner {
+  padding: 0;
+  color: #2b2b2b;
+}
+.cv-header.cv-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+  padding: 34px 58px 30px;
+  background: color-mix(in srgb, var(--cv-accent) 5%, #ededed);
+}
+.cv-header.cv-band .cv-name {
+  font-size: 2.35em;
+  letter-spacing: 0.07em;
+  color: #111;
+}
+.cv-header.cv-band .cv-headline {
+  margin-top: 0.35em;
+  font-size: 0.95em;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+}
+.cv-header.cv-band .cv-contacts {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15em;
+  color: #222;
+  font-size: 0.92em;
+}
+.cv-header.cv-band .cv-contacts span + span::before {
+  content: none;
+}
+.cv-paper.cv-banner .cv-body {
+  padding: 30px 58px 44px;
+}
+.cv-paper.cv-banner .cv-body > .cv-summary {
+  margin: 0 0 0.4em;
+  text-align: justify;
+}
+.cv-paper.cv-banner .cv-section {
+  margin-top: 1.35em;
+}
+.cv-paper.cv-banner .cv-body > .cv-section:first-child {
+  margin-top: 0;
+}
+.cv-paper.cv-banner .cv-section-title {
+  font-size: 1.12em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #111;
+  border-bottom: 1.5px solid #111;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.75em;
+}
+.cv-paper.cv-banner .cv-heading {
+  text-transform: uppercase;
+  color: #444;
+}
+.cv-paper.cv-banner .cv-stack .cv-date {
+  grid-row: 2;
+  font-style: italic;
+  color: #444;
+}
+.cv-paper.cv-banner .cv-stack .cv-sub {
+  grid-column: 1;
+  font-style: italic;
+  color: #444;
+}
+.cv-paper.cv-banner .cv-bullets {
+  margin-top: 0.45em;
+}
+.cv-paper.cv-banner .cv-marker {
+  color: #333;
+}
+.cv-paper.cv-banner .cv-item + .cv-item {
+  margin-top: 1.05em;
+}
+
+/* ---------- 衬线雅致：衬线大字、强调色标题，可放证件照 ---------- */
+.cv-elegant {
+  font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  padding: 50px 56px 48px;
+  color: #232323;
+}
+.cv-elegant .cv-header {
+  align-items: center;
+  gap: 0 2.2em;
+  margin-bottom: 0.6em;
+}
+.cv-elegant .cv-photo {
+  width: 118px;
+  height: 118px;
+}
+.cv-elegant .cv-name {
+  font-size: 2.75em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--cv-accent);
+}
+.cv-elegant .cv-headline {
+  margin-top: 0.55em;
+  font-size: 1.22em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cv-accent);
+}
+.cv-elegant .cv-contacts {
+  margin-top: 0.7em;
+  flex-direction: column;
+  font-weight: 700;
+  color: #222;
+  font-size: 0.95em;
+  line-height: 1.55;
+}
+.cv-elegant .cv-contacts span + span::before {
+  content: none;
+}
+.cv-elegant .cv-summary {
+  text-align: justify;
+}
+.cv-elegant .cv-section {
+  margin-top: 1.3em;
+}
+.cv-elegant .cv-section-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cv-accent);
+  border-bottom: 2px solid var(--cv-accent);
+  padding-bottom: 0.35em;
+  margin-bottom: 0.75em;
+}
+.cv-elegant .cv-heading {
+  font-size: 1.06em;
+}
+.cv-elegant .cv-stack .cv-date {
+  grid-row: 1 / span 2;
+  align-self: center;
+  font-weight: 700;
+  color: #222;
+  font-size: 1em;
+}
+.cv-elegant .cv-stack .cv-sub {
+  grid-column: 1;
+}
+.cv-elegant .cv-bullets {
+  margin-top: 0.4em;
+  text-align: justify;
+}
+.cv-elegant .cv-marker {
+  color: #222;
+}
+.cv-elegant .cv-section-skill .cv-inline-sub::before {
+  content: '• ';
+}
+
+/* ---------- 现代留白 ---------- */
+.cv-airy {
+  padding: 64px 64px 56px;
+}
+.cv-airy .cv-header {
+  margin-bottom: 2.2em;
+}
+.cv-airy .cv-name {
+  font-size: 2.55em;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25em;
+}
+.cv-airy .cv-headline {
+  margin-bottom: 0.4em;
+  letter-spacing: 0.08em;
+}
+.cv-airy .cv-contacts span + span::before {
+  content: '';
+  margin: 0 0.9em;
+}
+.cv-airy .cv-section {
+  display: grid;
+  grid-template-columns: 7.2em 1fr;
+  gap: 1.4em;
+  padding-top: 1em;
+  margin-top: 1.1em;
+  border-top: 1px solid #e3e5e8;
+}
+.cv-airy .cv-section:first-of-type {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+.cv-airy .cv-section-title {
+  font-size: 0.86em;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--cv-accent);
+  padding-top: 0.2em;
+}
+.cv-airy .cv-item + .cv-item {
+  margin-top: 1.1em;
+}
+.cv-airy .cv-marker {
+  color: var(--cv-faint);
+}
+
+/* ---------- 学术科研 ---------- */
+.cv-academic {
+  font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  padding: 56px 66px 52px;
+}
+.cv-academic .cv-header {
+  display: block;
+  margin-bottom: 1.2em;
+}
+.cv-academic .cv-name {
+  font-size: 2.05em;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.2em;
+}
+.cv-academic .cv-headline {
+  margin-bottom: 0.3em;
+  letter-spacing: 0.1em;
+}
+.cv-academic .cv-contacts span + span::before {
+  content: '·';
+}
+.cv-academic .cv-section {
+  margin-top: 1.25em;
+}
+.cv-academic .cv-section-title {
+  font-size: 1.05em;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--cv-accent);
+  border-bottom: 3px double var(--cv-accent);
+  padding-bottom: 0.15em;
+  margin-bottom: 0.65em;
+}
+.cv-academic .cv-heading,
+.cv-academic .cv-lead {
+  font-weight: 700;
+}
+.cv-academic .cv-date {
+  font-style: italic;
+}
+
+/* ---------- 紧凑专业 ---------- */
+.cv-compact {
+  --cv-size: max(12px, calc(12.5px * var(--cv-scale, 1)));
+  padding: 38px 44px 36px;
+  line-height: calc(var(--cv-leading, 1.55) - 0.08);
+}
+.cv-compact .cv-header {
+  padding-bottom: 0.7em;
+  margin-bottom: 0.4em;
+  border-bottom: 2px solid var(--cv-accent);
+}
+.cv-compact .cv-header-main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: 0.2em 1.6em;
+}
+.cv-compact .cv-name {
+  font-size: 2em;
+  letter-spacing: 0.06em;
+}
+.cv-compact .cv-contacts {
+  justify-content: flex-end;
+}
+.cv-compact .cv-headline {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0;
+}
+.cv-compact .cv-section {
+  margin-top: 0.8em;
+}
+.cv-compact .cv-section-title {
+  font-size: 1.06em;
+  font-weight: 700;
+  color: var(--cv-accent);
+  background: color-mix(in srgb, var(--cv-accent) 8%, white);
+  border-left: 3px solid var(--cv-accent);
+  padding: 0.1em 0.6em;
+  margin-bottom: 0.45em;
+}
+.cv-compact .cv-item + .cv-item {
+  margin-top: 0.55em;
+}
+.cv-compact .cv-bullet + .cv-bullet {
+  margin-top: 0.08em;
+}
+
+/* ---------- 双栏名片 ---------- */
+.cv-two {
+  display: grid;
+  grid-template-columns: 238px 1fr;
+  min-height: 1123px;
+}
+.cv-side {
+  background: color-mix(in srgb, var(--cv-accent) 7%, #fbfbfa);
+  padding: 50px 22px 40px 30px;
+  font-size: 0.93em;
+}
+.cv-main {
+  padding: 50px 42px 40px 32px;
+}
+.cv-sidebar .cv-header {
+  display: block;
+}
+.cv-sidebar .cv-photo {
+  width: 96px;
+  height: 118px;
+  margin-bottom: 1.2em;
+}
+.cv-sidebar .cv-name {
+  font-size: 2.1em;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2em;
+}
+.cv-sidebar .cv-headline {
+  margin-bottom: 0.6em;
+}
+.cv-sidebar .cv-contacts {
+  flex-direction: column;
+  gap: 0.15em;
+  word-break: break-all;
+}
+.cv-sidebar .cv-contacts span + span::before {
+  content: none;
+}
+.cv-sidebar .cv-section {
+  margin-top: 1.5em;
+}
+.cv-sidebar .cv-main .cv-section:first-child {
+  margin-top: 0.15em;
+}
+.cv-sidebar .cv-section-title {
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--cv-accent);
+  margin-bottom: 0.7em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.cv-sidebar .cv-main .cv-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--cv-accent) 30%, white);
+}
+.cv-side .cv-stack {
+  display: block;
+}
+.cv-side .cv-stack .cv-date {
+  display: block;
+  margin: 0;
+}
+.cv-side .cv-inline {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+.cv-side .cv-date {
+  margin-left: 0;
+}
+.cv-side .cv-inline + .cv-inline {
+  margin-top: 0.55em;
+}
+.cv-side .cv-inline-sep {
+  display: none;
+}
+
+/* ---------- 大厂高密度：参考 vibe-resume 的技术简历 ---------- */
+.cv-dense {
+  --cv-size: max(11.5px, calc(12.3px * var(--cv-scale, 1)));
+  --cv-deep: color-mix(in srgb, var(--cv-accent) 62%, #0b1530);
+  font-family: 'Source Serif 4 Variable', 'Noto Sans SC', 'PingFang SC', sans-serif;
+  padding: 32px 40px 32px;
+  line-height: calc(var(--cv-leading, 1.55) - 0.17);
+  color: #171717;
+}
+.cv-dense .cv-header {
+  display: block;
+  margin-bottom: 0.55em;
+}
+.cv-dense .cv-name {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  font-size: 2.1em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  margin-bottom: 0.4em;
+  color: #111;
+}
+.cv-dense .cv-contacts {
+  color: #171717;
+  font-size: 1em;
+}
+.cv-dense .cv-contacts span + span::before {
+  content: '|';
+  margin: 0 0.9em;
+  color: #171717;
+}
+.cv-dense .cv-headline {
+  margin-top: 0.15em;
+  font-weight: 700;
+  color: #171717;
+}
+.cv-dense .cv-edu-row {
+  margin-top: 0.15em;
+}
+.cv-dense .cv-edu-row strong {
+  font-weight: 700;
+}
+.cv-dense .cv-edu-note {
+  color: #3a3f48;
+}
+.cv-dense .cv-summary {
+  margin-top: 0.35em;
+  font-weight: 700;
+  color: var(--cv-deep);
+}
+.cv-dense .cv-section {
+  margin-top: 0.7em;
+}
+.cv-dense .cv-section-title {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  font-size: 1.42em;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--cv-accent);
+  border-bottom: 2px solid var(--cv-accent);
+  padding-bottom: 0.18em;
+  margin-bottom: 0.45em;
+}
+.cv-dense .cv-item + .cv-item {
+  margin-top: 0.7em;
+}
+.cv-dense .cv-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  min-height: 2.35em;
+  padding: 0.2em 0.85em;
+  border-left: 4px solid var(--cv-accent);
+  border-radius: 5px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--cv-accent) 10%, white), color-mix(in srgb, var(--cv-accent) 3%, white));
+  font-size: 1.08em;
+  font-weight: 600;
+}
+.cv-dense .cv-strip .cv-heading {
+  font-weight: 600;
+}
+.cv-dense .cv-strip-right {
+  flex-shrink: 0;
+  color: #303744;
+  font-weight: 600;
+}
+.cv-dense .cv-strip-sep {
+  margin: 0 0.35em;
+  color: #8a909a;
+}
+.cv-dense .cv-project-head .cv-heading {
+  color: var(--cv-deep);
+  font-size: 1.1em;
+}
+.cv-dense .cv-heading-sub {
+  font-weight: 600;
+}
+.cv-dense .cv-project-head .cv-date {
+  color: var(--cv-deep);
+  font-weight: 600;
+}
+.cv-dense .cv-bullets {
+  margin-top: 0.35em;
+}
+.cv-dense .cv-bullet {
+  gap: 0.35em;
+}
+.cv-dense .cv-bullet + .cv-bullet {
+  margin-top: 0.14em;
+}
+.cv-dense .cv-marker {
+  color: #111;
+  width: 0.9em;
+  text-align: center;
+}
+.cv-dense .cv-lead {
+  color: #111;
+}
+.cv-dense .cv-section-skill .cv-inline,
+.cv-dense .cv-section-honor .cv-inline {
+  gap: 0.15em;
+}
+.cv-dense .cv-section-skill .cv-inline-head {
+  font-weight: 700;
+}
+.cv-dense .cv-section-skill .cv-inline + .cv-inline {
+  margin-top: 0.14em;
+}
+
+.cv-todo {
+  background: #fdf1e8;
+  color: #c2571a;
+  border-radius: 2px;
+  padding: 0 0.15em;
+  outline: 1px dashed #e7a77e;
+}
+
+/* ---------- 打印与分页 ---------- */
+@media print {
+  .cv-item,
+  .cv-bullet,
+  .cv-inline {
+    break-inside: avoid;
+  }
+  .cv-section-title,
+  .cv-strip {
+    break-after: avoid;
+  }
+}
