@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>拾历 Demo · 合成舞台</title>
+<link rel="stylesheet" href="/node_modules/@fontsource-variable/source-serif-4/opsz.css" />
+<link rel="stylesheet" href="/node_modules/@fontsource/noto-serif-sc/400.css" />
+<link rel="stylesheet" href="/node_modules/@fontsource/noto-serif-sc/500.css" />
+<link rel="stylesheet" href="/node_modules/@fontsource/noto-serif-sc/600.css" />
+<link rel="stylesheet" href="/node_modules/@fontsource/noto-serif-sc/700.css" />
+<link rel="stylesheet" href="/node_modules/@fontsource/noto-serif-sc/900.css" />
+<link rel="stylesheet" href="/node_modules/@fontsource/noto-sans-sc/400.css" />
+<link rel="stylesheet" href="/node_modules/@fontsource/noto-sans-sc/700.css" />
+<link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+
+  <!-- 0–8s 痛点开场（视频包装） -->
+  <div id="intro" class="layer">
+    <div id="i-l1" class="i-line big"></div>
+    <div id="i-l2" class="i-line mid"></div>
+    <div id="i-sample">
+      <div class="i-label">示例原文</div>
+      <div class="i-sentence"><span class="i-dot"></span><span id="i-pre">参与校园活动报名系统开发，负责</span><span id="i-key">接口优化</span><span id="i-post">。</span></div>
+      <div id="i-q1" class="i-q">怎么优化？</div>
+      <div id="i-q2" class="i-q">效果如何？</div>
+      <svg id="i-qlines" width="1920" height="1080"><path id="i-ql1" /><path id="i-ql2" /></svg>
+    </div>
+    <div id="i-l3" class="i-line big"></div>
+  </div>
+
+  <!-- 8–14s 品牌：粒子聚合成品牌名（视频包装，不是网页交互） -->
+  <canvas id="particles" width="1920" height="1080"></canvas>
+  <div id="brand" class="layer">
+    <div id="b-row"><img id="b-icon" src="/brand/icon-256.png" alt="" /><div id="b-name">拾历</div></div>
+    <div id="b-tag">拾起经历，呈现实力。</div>
+    <div id="b-steps"><span class="b-step">整理事实</span><span class="b-arrow">→</span><span class="b-step">对准岗位</span><span class="b-arrow">→</span><span class="b-step">生成简历</span></div>
+  </div>
+
+  <!-- 14–82s 真实网页实操 -->
+  <div id="win"><canvas id="wc" width="1600" height="900"></canvas><div id="win-ov"></div></div>
+
+  <div id="top" class="layer">
+    <div id="t-cur" class="t-title"><span class="t-num"></span><span class="t-name"></span><div class="t-subs"></div></div>
+    <div id="t-prev" class="t-title"><span class="t-num"></span><span class="t-name"></span><div class="t-subs"></div></div>
+    <div id="t-progress"></div>
+  </div>
+  <div id="bottom" class="layer">
+    <div id="cap-a" class="cap"></div>
+    <div id="cap-b" class="cap"></div>
+    <div id="badge"><span class="badge-dot"></span>虚构示例数据</div>
+  </div>
+  <div id="record" class="layer">
+    <div id="rec-card">
+      <div class="rec-head"><span class="rec-badge">虚构示例数据</span><span class="rec-title"></span></div>
+      <div class="rec-rows"></div>
+      <div class="rec-note"></div>
+    </div>
+  </div>
+
+  <!-- 82–90s 价值收束 -->
+  <div id="outro" class="layer">
+    <div id="o-nodes">
+      <div class="o-node" id="o-n1"><div class="o-thumb"><canvas width="960" height="600"></canvas></div><div class="o-label">事实库</div><div class="o-sub">经历记录与补充的数字</div></div>
+      <div class="o-node" id="o-n2"><div class="o-thumb"><canvas width="960" height="600"></canvas></div><div class="o-label">岗位表达</div><div class="o-sub">按要求选出有依据的内容</div></div>
+      <div class="o-node" id="o-n3"><div class="o-thumb"><canvas width="960" height="600"></canvas></div><div class="o-label">简历成稿</div><div class="o-sub">一页 A4，真实导出</div></div>
+      <svg id="o-arrows" width="1920" height="1080">
+        <defs>
+          <marker id="ah-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+          <marker id="ah-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#0a84ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+        </defs>
+        <path id="o-a1" marker-end="url(#ah-ink)" />
+        <path id="o-a2" marker-end="url(#ah-ink)" />
+        <path id="o-back" marker-end="url(#ah-blue)" />
+      </svg>
+      <div id="o-backlabel">好表达，存回库。</div>
+    </div>
+    <div id="o-end">
+      <div id="o-paper"><img src="/footage-final/resume-export.png" alt="" /></div>
+      <div id="o-brand">
+        <div id="o-row"><img src="/brand/icon-256.png" alt="" /><span>拾历</span></div>
+        <div id="o-tag">拾起经历，呈现实力。</div>
+        <div id="o-flow">事实库 → 岗位表达 → 简历成稿</div>
+      </div>
+      <div id="o-foot">演示人物、岗位与数据均为虚构 · 界面为真实产品录屏 · 配乐为原创生成</div>
+    </div>
+  </div>
+
+  <!-- 封面（单独渲染） -->
+  <div id="cover" class="layer"></div>
+</div>
+<div id="scrub" hidden><input type="range" min="0" max="2699" value="0" /><button>播放</button><span></span></div>
+<script type="module" src="/src/engine.js"></script>
+</body>
+</html>

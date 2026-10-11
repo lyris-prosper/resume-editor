@@ -1,0 +1,121 @@
+/* 拾历 Demo 视频：沿用产品的设计语言——白纸黑字、衬线为骨、细线分隔；蓝 = 新写的表达，橙 = 待补充 */
+:root {
+  --paper: #ffffff;
+  --desk: #f4f3ef;
+  --ink: #111111;
+  --ink-2: #4d4d4d;
+  --ink-3: #8c8c8c;
+  --ink-4: #bdbdbd;
+  --rule: #e6e5e1;
+  --blue: #0a84ff;
+  --blue-wash: rgb(10 132 255 / 0.13);
+  --alert: #c2571a;
+  --alert-wash: #fdf1e8;
+  --serif: 'Source Serif 4 Variable', 'Noto Serif SC', serif;
+  --sans: 'Noto Sans SC', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--desk); }
+body { font-family: var(--serif); color: var(--ink); -webkit-font-smoothing: antialiased; font-optical-sizing: auto; font-kerning: normal; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+.layer { position: absolute; inset: 0; pointer-events: none; }
+#bg { position: absolute; inset: 0; background: radial-gradient(1400px 900px at 50% 42%, #faf9f6 0%, var(--desk) 70%, #efeee9 100%); }
+
+/* ---------- 开场 ---------- */
+.i-line { position: absolute; left: 0; right: 0; text-align: center; white-space: nowrap; }
+.i-line.big { font-size: 92px; font-weight: 700; letter-spacing: 0.04em; line-height: 1.2; }
+.i-line.mid { font-size: 60px; font-weight: 600; letter-spacing: 0.03em; line-height: 1.3; }
+.i-line .ch { display: inline-block; will-change: transform, opacity, filter; }
+.i-word { display: inline-block; position: relative; padding: 0 0.12em; margin: 0 0.04em; }
+.i-word::before { content: ''; position: absolute; inset: 0.08em 0 0.02em; border-radius: 0.14em; background: rgb(17 17 17 / 0.07); transform-origin: left center; transform: scaleX(var(--w, 0)); }
+#i-sample { position: absolute; inset: 0; }
+.i-label { position: absolute; left: 0; right: 0; top: 404px; text-align: center; font-size: 22px; letter-spacing: 0.28em; color: var(--ink-3); }
+.i-sentence { position: absolute; left: 0; right: 0; top: 460px; text-align: center; font-size: 56px; font-weight: 500; letter-spacing: 0.03em; white-space: nowrap; }
+.i-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); margin-right: 26px; vertical-align: 0.22em; }
+#i-key { position: relative; display: inline-block; }
+#i-key::after { content: ''; position: absolute; inset: -6px -10px; border: 2px dashed var(--alert); border-radius: 12px; background: rgb(253 241 232 / 0.55); z-index: -1; opacity: var(--box, 0); }
+.i-q { position: absolute; font-size: 36px; font-weight: 600; color: var(--alert); padding: 10px 24px; border-radius: 999px; background: var(--paper); box-shadow: 0 0 0 1.5px rgb(194 87 26 / 0.55), 0 14px 30px -18px rgb(17 17 17 / 0.4); white-space: nowrap; }
+#i-qlines { position: absolute; left: 0; top: 0; }
+#i-qlines path { fill: none; stroke: var(--alert); stroke-width: 2; stroke-dasharray: 6 7; opacity: 0.7; }
+
+/* ---------- 品牌 ---------- */
+#particles { position: absolute; left: 0; top: 0; }
+#brand { text-align: center; }
+#b-row { position: absolute; left: 0; right: 0; top: 300px; display: flex; justify-content: center; align-items: center; gap: 40px; }
+#b-icon { width: 150px; height: 150px; filter: drop-shadow(0 14px 18px rgb(17 17 17 / 0.16)); }
+#b-name { font-size: 196px; font-weight: 700; letter-spacing: 0.1em; line-height: 1; padding-left: 0.1em; }
+#b-tag { position: absolute; left: 0; right: 0; top: 548px; font-size: 46px; font-weight: 500; letter-spacing: 0.16em; color: var(--ink-2); }
+#b-steps { position: absolute; left: 0; right: 0; top: 664px; display: flex; justify-content: center; align-items: center; gap: 26px; font-size: 32px; font-weight: 600; letter-spacing: 0.08em; }
+.b-step { padding: 12px 30px; border-radius: 999px; background: var(--paper); box-shadow: 0 0 0 1px rgb(17 17 17 / 0.12), 0 12px 26px -18px rgb(17 17 17 / 0.4); }
+.b-arrow { color: var(--ink-3); font-weight: 400; }
+
+/* ---------- 窗口 ---------- */
+#win { position: absolute; left: 160px; top: 100px; width: 1600px; height: 900px; border-radius: 16px; overflow: hidden; background: var(--paper);
+  box-shadow: 0 0 0 1px rgb(17 17 17 / 0.09), 0 2px 4px rgb(17 17 17 / 0.04), 0 30px 70px -34px rgb(17 17 17 / 0.45), 0 70px 140px -70px rgb(17 17 17 / 0.3); transform-origin: 50% 50%; }
+#wc { display: block; width: 1600px; height: 900px; }
+#win-ov { position: absolute; inset: 0; }
+
+/* ---------- 顶部：步骤标题与进度 ---------- */
+.t-title { position: absolute; left: 160px; top: 20px; white-space: nowrap; }
+.t-num { display: inline-block; font-size: 44px; font-weight: 600; line-height: 1; letter-spacing: 0.02em; vertical-align: top; font-variant-numeric: lining-nums tabular-nums; }
+.t-name { display: inline-block; margin-left: 20px; font-size: 32px; font-weight: 600; letter-spacing: 0.06em; line-height: 1; vertical-align: top; padding-top: 4px; }
+.t-subs { position: absolute; left: 76px; top: 52px; font-size: 16px; letter-spacing: 0.06em; color: var(--ink-4); white-space: nowrap; }
+.t-subs span { transition: none; }
+.t-subs .on { color: var(--ink); font-weight: 600; }
+.t-subs .done { color: var(--ink-3); }
+.t-subs .sep { display: inline-block; width: 22px; height: 1px; background: currentColor; vertical-align: 0.32em; margin: 0 10px; opacity: 0.7; }
+#t-progress { position: absolute; right: 160px; top: 30px; display: flex; gap: 18px; }
+.p-item { width: 116px; font-size: 15px; letter-spacing: 0.05em; color: var(--ink-4); white-space: nowrap; }
+.p-item b { font-weight: 600; margin-right: 8px; font-variant-numeric: lining-nums tabular-nums; }
+.p-bar { margin-top: 9px; height: 3px; border-radius: 3px; background: rgb(17 17 17 / 0.08); overflow: hidden; }
+.p-bar i { display: block; height: 100%; background: var(--ink); width: 0; }
+.p-item.on { color: var(--ink); }
+.p-item.done { color: var(--ink-3); }
+
+/* ---------- 底部：说明与角标 ---------- */
+.cap { position: absolute; left: 0; right: 0; top: 1014px; text-align: center; font-size: 31px; font-weight: 600; letter-spacing: 0.08em; line-height: 52px; white-space: nowrap; }
+.cap::before { content: ''; display: inline-block; width: 26px; height: 2px; background: var(--ink); vertical-align: 0.34em; margin-right: 18px; }
+.cap.blue::before { background: var(--blue); }
+.cap.orange::before { background: var(--alert); }
+#badge { position: absolute; left: 160px; top: 1023px; height: 34px; padding: 0 16px 0 14px; display: flex; align-items: center; gap: 9px; border-radius: 999px; font-size: 16px; letter-spacing: 0.08em; color: var(--alert); background: var(--alert-wash); box-shadow: inset 0 0 0 1px rgb(194 87 26 / 0.35); }
+.badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--alert); }
+
+/* ---------- 虚构示例压测记录卡 ---------- */
+#rec-card { position: absolute; left: 0; top: 0; width: 600px; padding: 30px 34px 26px; border-radius: 22px; background: var(--paper); transform-origin: 0 0;
+  box-shadow: 0 0 0 1px rgb(17 17 17 / 0.08), 0 30px 60px -28px rgb(17 17 17 / 0.45); border-left: 6px solid var(--alert); }
+.rec-head { display: flex; align-items: center; gap: 14px; }
+.rec-badge { flex: none; font-size: 17px; letter-spacing: 0.06em; color: var(--alert); background: var(--alert-wash); padding: 5px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgb(194 87 26 / 0.35); }
+.rec-title { font-size: 25px; font-weight: 600; letter-spacing: 0.04em; white-space: nowrap; }
+.rec-rows { margin-top: 18px; border-top: 1px solid var(--rule); }
+.rec-row { display: flex; align-items: baseline; justify-content: space-between; padding: 14px 2px; border-bottom: 1px solid var(--rule); }
+.rec-row span { font-size: 24px; color: var(--ink-2); letter-spacing: 0.04em; }
+.rec-row b { font-size: 34px; font-weight: 600; font-variant-numeric: lining-nums tabular-nums; letter-spacing: 0.01em; }
+.rec-note { margin-top: 14px; font-size: 17px; color: var(--ink-3); letter-spacing: 0.06em; }
+
+/* ---------- 收束 ---------- */
+.o-node { position: absolute; top: 300px; width: 480px; }
+.o-thumb { width: 480px; height: 300px; border-radius: 16px; overflow: hidden; background: var(--paper); box-shadow: 0 0 0 1px rgb(17 17 17 / 0.09), 0 26px 50px -28px rgb(17 17 17 / 0.45); }
+.o-thumb canvas { width: 480px; height: 300px; display: block; }
+.o-label { margin-top: 28px; text-align: center; font-size: 40px; font-weight: 700; letter-spacing: 0.12em; }
+.o-sub { margin-top: 8px; text-align: center; font-size: 20px; color: var(--ink-3); letter-spacing: 0.08em; }
+#o-n1 { left: 150px; } #o-n2 { left: 720px; } #o-n3 { left: 1290px; }
+#o-arrows { position: absolute; left: 0; top: 0; overflow: visible; }
+#o-arrows path { fill: none; stroke-width: 2.2; stroke-linecap: round; }
+#o-a1, #o-a2 { stroke: var(--ink); }
+#o-back { stroke: var(--blue); stroke-width: 2.6; }
+#o-backlabel { position: absolute; left: 0; right: 0; top: 850px; text-align: center; font-size: 34px; font-weight: 700; letter-spacing: 0.12em; color: var(--blue); }
+#o-end { position: absolute; inset: 0; }
+#o-paper { position: absolute; left: 250px; top: 120px; width: 590px; height: 835px; border-radius: 6px; overflow: hidden; background: var(--paper); box-shadow: 0 0 0 1px rgb(17 17 17 / 0.08), 0 40px 80px -36px rgb(17 17 17 / 0.5), 0 10px 22px -14px rgb(17 17 17 / 0.25); }
+#o-paper img { width: 100%; height: 100%; display: block; }
+#o-brand { position: absolute; left: 960px; top: 0; bottom: 0; width: 760px; display: flex; flex-direction: column; justify-content: center; }
+#o-row { display: flex; align-items: center; gap: 30px; }
+#o-row img { width: 118px; height: 118px; filter: drop-shadow(0 12px 16px rgb(17 17 17 / 0.16)); }
+#o-row span { font-size: 150px; font-weight: 700; letter-spacing: 0.1em; line-height: 1; }
+#o-tag { margin-top: 36px; font-size: 44px; font-weight: 500; letter-spacing: 0.16em; color: var(--ink-2); }
+#o-flow { margin-top: 44px; font-size: 24px; letter-spacing: 0.14em; color: var(--ink-3); }
+#o-foot { position: absolute; left: 0; right: 0; bottom: 34px; text-align: center; font-size: 16px; letter-spacing: 0.12em; color: var(--ink-4); }
+
+/* ---------- 预览用的拖动条（渲染时隐藏） ---------- */
+#scrub { position: fixed; left: 20px; right: 20px; bottom: 16px; display: flex; gap: 12px; align-items: center; z-index: 99; font: 14px var(--sans); }
+#scrub input { flex: 1; }
+#scrub[hidden] { display: none; }

@@ -1,0 +1,17 @@
+{
+  "name": "shili-demo-video-edit",
+  "private": true,
+  "type": "module",
+  "description": "拾历 Demo 视频的可编辑合成工程：逐帧 HTML 合成 + Playwright 截帧 + ffmpeg 编码",
+  "scripts": {
+    "frames": "node scripts/extract-frames.mjs",
+    "music": "python3 scripts/music.py",
+    "render": "node scripts/render.mjs",
+    "preview": "node scripts/serve.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/source-serif-4": "5.3.0",
+    "@fontsource/noto-serif-sc": "5.3.0",
+    "@fontsource/noto-sans-sc": "5.3.0"
+  }
+}
